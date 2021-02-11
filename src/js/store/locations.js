@@ -18,7 +18,13 @@ class Locations {
         this.countries = this.serialazeCountries(countries);
         this.cities = this.serializeCities(cities);
         this.shortCitiesList = this.createShortCitiesList(this.cities);
+
         return response;
+    }
+
+
+    getCityCodeByKey(key) {
+        return this.cities[key].code;
     }
 
     createShortCitiesList(cities) {
