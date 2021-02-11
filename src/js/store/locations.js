@@ -47,10 +47,10 @@ class Locations {
     для получения кода города и отправки его на сервер */
     serializeCities(cities) {
         return cities.reduce((acc, cities) => {
-            const country_name = this.getCountryNameByCode(city.country_code);
-            const city_name = city.name || city.name_translations.en;
+            const country_name = this.getCountryNameByCode(cities.country_code);
+            const city_name = cities.name || cities.name_translations.en;
             const key = `${city_name},${country_name}`;
-            acc[key] = city;
+            acc[key] = cities;
             return acc;
         }, {});
     }
@@ -59,9 +59,9 @@ class Locations {
         return this.countries[code].name;
     }
 
-
-    getCitiesbyCountryCode(code) {
-        return this.cities.filter(city => city.country_code === code);
+    async fetchTickets(params) {
+        const response = await this.api.prices(params);
+        console.log(response);
     }
 }
 
